@@ -107,15 +107,15 @@ int main(int argc, char const *argv[])
 		A[i] = new double [n];
 		R[i] = new double [n];
 	}
-	A[0][0] = 2.0;
+	A[0][0] = 7.0;
 	A[0][1] = 0.0;
 	A[0][2] = 1.0;
 	A[1][0] = 0.0;
-	A[1][1] = 2.0;
+	A[1][1] = 7.0;
 	A[1][2] = 0.0;
 	A[2][0] = 1.0;
 	A[2][1] = 0.0;
-	A[2][2] = 2.0;
+	A[2][2] = 7.0;
 
 	jacobi_method(A, R, n);
 	std::cout << "lambda = " << A[0][0];
