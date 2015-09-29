@@ -1,32 +1,61 @@
 #include <iostream>
 #include <cmath>
+#include <fstream>
+#include <iomanip>
 #include "jacobi-method.h"
-
+using namespace std;
 int main(int argc, char const *argv[])
 {
 	double ** A;
-	int n = 3;
+	double * V;
 
-	A = new double* [n];
-	for (int i = 0; i < n; i++){
-		A[i] = new double [n];
+	int n_step = atoi(argv[1]);
+	double rho_min = 0;
+	double rho_max = atof(argv[2]);
+	double h = (rho_max - rho_min)/n_step;
+
+
+	A = new double* [n_step]; V = new double [n_step];
+	for (int i = 0; i < n_step; i++){
+		A[i] = new double [n_step];
+		double temp = rho_min + i*h;
+		V[i] = temp*temp;
 	}
-	A[0][0] = 7.0;
-	A[0][1] = 0.0;
-	A[0][2] = 1.0;
-	A[1][0] = 0.0;
-	A[1][1] = 7.0;
-	A[1][2] = 0.0;
-	A[2][0] = 1.0;
-	A[2][1] = 0.0;
-	A[2][2] = 7.0;
-	jacobi_method(A, n);
 
-	std::cout << "lambda_1 = " << A[0][0] << std::endl;
 
-	std::cout << "lambda_2 = " << A[1][1] << std::endl;
+	// creating the matrix A
+	// First: first and last rows
+	double h_squared = h*h;
+	double e_elements = -1.0/h_squared;
+	double d_elements = 2.0/h_squared;
+	A[0][0] = d_elements + V[0];
+	A[0][1] = e_elements;
+	A[n_step - 1][n_step - 1] = d_elements + V[n_step - 1];
+	A[n_step - 1][n_step - 2] = e_elements;
+	// Next: all other rows
+	for (int i = 1; i < n_step - 1; i++) {
+		A[i][i] = d_elements + V[i];
+		A[i][i+1] = e_elements;
+		A[i][i-1] = e_elements;
+	}
 
-	std::cout << "lambda_3 = " << A[2][2] << std::endl;
+
+	jacobi_method(A, n_step);
+
+
+	// write the data to file
+	ofstream targetfile;
+	targetfile.open("outfile_mine.txt");
+	for (int i = 0; i < n_step; i++){
+		targetfile << setw(15) << setprecision(8) << A[i][i] << endl;
+	}
+
+	targetfile.close();
+
+	delete[] A;
+	delete[] V;
+
+
 	return 0;
 }
 
@@ -36,13 +65,13 @@ void jacobi_method(double **A, int n)
 	int k, l;
 	double eps = 1.0e-8;
 	double max_off = max_off_diag(A, &k, &l, n);
-	while (max_off*max_off > eps) {
-		max_off = max_off_diag(A, &k, &l, n);
+	double max_number_iterations = (double) n * (double) n * (double) n; 
+	while (max_off*max_off > eps && (double) iterations < max_number_iterations) {
 		rotate(A, k, l, n);
+		max_off = max_off_diag(A, &k, &l, n);
 		iterations++;
 	}
 	std::cout << "Number of iterations: " << iterations << std::endl;
-
 }
 
 void rotate(double **A, int k, int l, int n)

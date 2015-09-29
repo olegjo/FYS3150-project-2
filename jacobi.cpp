@@ -1,5 +1,8 @@
 #include <iostream> 
 #include <cmath> 
+#include "fstream"
+#include "iomanip"
+using namespace std;
 //#include "jacobi.h"
 
 void rotate ( double ** A, double ** R, int k, int l, int n );
@@ -93,38 +96,60 @@ void rotate ( double ** A, double ** R, int k, int l, int n ) {
 	return; 
 }
 
-
 int main(int argc, char const *argv[])
 {
-
-	double ** R;
 	double ** A;
-	int n = 3;
+	double ** R;
+	double * V;
 
-	A = new double* [n];
-	R = new double* [n];
-	for (int i = 0; i < n; i++){
-		A[i] = new double [n];
-		R[i] = new double [n];
+	int n_step = atoi(argv[1]);
+	double rho_min = 0;
+	double rho_max = 100;
+	double h = (rho_max - rho_min)/n_step;
+
+
+	A = new double* [n_step]; R = new double* [n_step]; 
+	V = new double [n_step];
+	for (int i = 0; i < n_step; i++){
+		A[i] = new double [n_step];
+		R[i] = new double [n_step];
+		double temp = rho_min + i*h;
+		V[i] = temp*temp;
 	}
-	A[0][0] = 7.0;
-	A[0][1] = 0.0;
-	A[0][2] = 1.0;
-	A[1][0] = 0.0;
-	A[1][1] = 7.0;
-	A[1][2] = 0.0;
-	A[2][0] = 1.0;
-	A[2][1] = 0.0;
-	A[2][2] = 7.0;
 
-	jacobi_method(A, R, n);
-	std::cout << "lambda = " << A[0][0];
-	std::cout << "    u = [" << R[0][0] << ", " << R[0][1] << ", " << R[0][2] << "]" << std::endl;
 
-	std::cout << "lambda = " << A[1][1];
-	std::cout << "    u = [" << R[1][0] << ", " << R[1][1] << ", " << R[1][2] << "]" << std::endl;
+	// creating the matrix A
+	// First: first and last rows
+	double h_squared = h*h;
+	double e_elements = -1.0/h_squared;
+	double d_elements = 2.0/h_squared;
+	A[0][0] = d_elements + V[0];
+	A[0][1] = e_elements;
+	A[n_step - 1][n_step - 1] = d_elements + V[n_step - 1];
+	A[n_step - 1][n_step - 2] = e_elements;
+	// Next: all other rows
+	for (int i = 1; i < n_step - 1; i++) {
+		A[i][i] = d_elements + V[i];
+		A[i][i+1] = e_elements;
+		A[i][i-1] = e_elements;
+	}
 
-		std::cout << "lambda = " << A[2][2];
-	std::cout << "    u = [" << R[2][0] << ", " << R[2][1] << ", " << R[2][2] << "]" << std::endl;
+
+	jacobi_method(A, R, n_step);
+
+
+	// write the data to file
+	ofstream targetfile;
+	targetfile.open("outfile_not_mine.txt");
+	for (int i = 0; i < n_step; i++){
+		targetfile << setw(15) << setprecision(8) << A[i][i] << endl;
+	}
+
+	targetfile.close();
+	delete[] A;
+	delete[] R;
+	delete[] V;
+
 	return 0;
 }
+

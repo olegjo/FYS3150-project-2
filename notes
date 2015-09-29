@@ -1,0 +1,18 @@
+Include benchmark calculations on git:
+	Selected calculations.
+	* make a folder with benckmarks
+
+README file on git is very useful.
+
+Unit tests/tests
+	Tests 	| Analytical eigenvalues for harmonic oscillator
+			| We have here the analytical solution
+			| - non-interacting
+			| - interacting case (Taut)
+			| ex: algorithm: jacobi
+			| 	* 2x2 matrix: one rotation
+			|	* eigenvalues with second-order formula (known)
+			|	* matrix with known position of largest matrix
+			|	  element - use to check that the search
+			|	  function works.
+			|	
