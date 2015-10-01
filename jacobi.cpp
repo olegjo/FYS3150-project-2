@@ -104,7 +104,7 @@ int main(int argc, char const *argv[])
 
 	int n_step = atoi(argv[1]);
 	double rho_min = 0;
-	double rho_max = 100;
+	double rho_max = atof(argv[2]);
 	double h = (rho_max - rho_min)/n_step;
 
 

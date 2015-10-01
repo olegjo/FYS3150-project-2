@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iomanip>
 #include "jacobi-method.h"
+
 using namespace std;
 int main(int argc, char const *argv[])
 {
@@ -18,10 +19,9 @@ int main(int argc, char const *argv[])
 	A = new double* [n_step]; V = new double [n_step];
 	for (int i = 0; i < n_step; i++){
 		A[i] = new double [n_step];
-		double temp = rho_min + i*h;
+		double temp = rho_min + (i+1)*h;
 		V[i] = temp*temp;
 	}
-
 
 	// creating the matrix A
 	// First: first and last rows
@@ -54,8 +54,6 @@ int main(int argc, char const *argv[])
 
 	delete[] A;
 	delete[] V;
-
-
 	return 0;
 }
 
@@ -106,7 +104,6 @@ void rotate(double **A, int k, int l, int n)
 	A[l][l] = A[l][l]*c*c + 2*A[k][l]*c*s + A_kk*s*s;
 	A[k][l] = 0;
 	A[l][k] = 0;
-	return;
 }
 
 

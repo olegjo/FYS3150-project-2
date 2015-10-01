@@ -22,12 +22,37 @@ eps = 1e-8
 A = np.array([[2., 0., 1.], [0., 2., 0.], [1., 0., 2.]])
 
 
+## Creating the matrix A
+n = 100
+rho_max = 100
+
+A = np.zeros([n,n])
+rho_min = 0
+h = (rho_max - rho_min)/float(n)
+h_squared = h*h
+e_elements = -1./h_squared
+d_elements = 2./h_squared
+V = np.array([rho_min + i*h for i in range(n)])
+A[0,0] = d_elements + V[0]
+A[0,1] = e_elements
+A[-1,-1] = d_elements + V[-1]
+A[-1,-2] = e_elements
+
+for i in range(1,n-1):
+	A[i,i] = d_elements + V[i]
+	A[i,i+1] = e_elements
+	A[i,i-1] = e_elements
+
+
+
 
 # choosing a tolerance
 eps = 1e-8
 
 k,l, max_offdiag = maxoffdiag(A, k=None, l=None)
+number_of_iterations = 0
 while max_offdiag**2 > eps:
+	number_of_iterations += 1
 	tau = (A[l,l] - A[k,k])/(2.*A[k,l])
 	if tau > 0:
 		tau_sqrt = np.sqrt(tau**2 + 1.)
@@ -60,5 +85,12 @@ while max_offdiag**2 > eps:
 	k, l, max_offdiag = maxoffdiag(A, k, l)
 
 print A
+print number_of_iterations
+
+
+
+
+
+
 
 
