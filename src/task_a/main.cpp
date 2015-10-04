@@ -9,6 +9,9 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
+    clock_t start, finish;
+    start = clock();
+
     // setting up the matrix A and R
     double ** A;
     double ** R;
@@ -47,32 +50,41 @@ int main(int argc, char* argv[])
         }
     }
 
+
+
     // add the potentials to the diagonal
     Potentials::oneElectron(A, n, rho_min, h);
 
-    jacobi_method(A, R, n);
+    int numberOfIterations = jacobi_method(A, R, n);
+    cout << "Number of iterations: " << numberOfIterations << endl;
+    finish = clock();
+    cout << "Compution time: " << ((finish - start*1.0)/CLOCKS_PER_SEC) << " seconds" << endl;
 
 
-//    // write the data to file
-//    ofstream targetfile_eigenValues;
-//    targetfile_eigenValues.open("results_eigenValues_oneElectron.txt");
-//    for (int i = 0; i < n; i++){
-//        targetfile_eigenValues << setw(15) << setprecision(8) << A[i][i] << endl;
-//    }
-//    targetfile_eigenValues.close();
+    // write the data to file
+    ofstream targetfile_paramaters("../../results/parameters_oneElectron.txt");
+    targetfile_paramaters << "rho_min = " << rho_min << endl;
+    targetfile_paramaters << "rho_max = " << rho_max << endl;
+    targetfile_paramaters << "n = " << n << endl;
+    targetfile_paramaters.close();
+
+    ofstream targetfile_eigenValues("../../results/results_eigenValues_oneElectron.txt");
+    for (int i = 0; i < n; i++){
+        targetfile_eigenValues << setw(15) << setprecision(8) << A[i][i] << endl;
+    }
+    targetfile_eigenValues.close();
 
 
 
 
-//    ofstream targetfile_eigenVectors;
-//    targetfile_eigenVectors.open("results_eigenVectors_oneElectron.txt");
-//    for (int i = 0; i < n; i++) {
-//        for (int j = 0; j < n; j++) {
-//            targetfile_eigenVectors << setw(15) << setprecision(8) << R[i][j] << " ";
-//        }
-//        targetfile_eigenVectors << endl;
-//    }
-//    targetfile_eigenVectors.close();
+    ofstream targetfile_eigenVectors("../../results/results_eigenVectors_oneElectron.txt");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            targetfile_eigenVectors << setw(15) << setprecision(8) << R[i][j] << " ";
+        }
+        targetfile_eigenVectors << endl;
+    }
+    targetfile_eigenVectors.close();
 
 
 

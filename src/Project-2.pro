@@ -1,8 +1,8 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    task_1 \
-    task_2 \
+    task_a \
+    task_c \
     unit_tests
 
 SOURCES += \

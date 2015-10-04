@@ -1,0 +1,4 @@
+rho_min = 0
+rho_max = 8
+n = 220
+omega_r = 0.5

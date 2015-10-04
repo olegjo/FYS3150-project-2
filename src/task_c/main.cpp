@@ -48,32 +48,37 @@ int main(int argc, char* argv[])
     }
 
     // add the potentials to the diagonal
-    double omega_r = 1.0;
+    double omega_r = atof(argv[3]);
     Potentials::twoElectrons(A, n, rho_min, h, omega_r);
 
-    jacobi_method(A, R, n);
+    int iterations = jacobi_method(A, R, n);
+    cout << "Number of iterations: " << iterations << endl;
+
+    // write the data to file
+    ofstream targetfile_paramaters("../../results/parameters_twoElectrons_5.txt");
+    targetfile_paramaters << "rho_min = " << rho_min << endl;
+    targetfile_paramaters << "rho_max = " << rho_max << endl;
+    targetfile_paramaters << "n = " << n << endl;
+    targetfile_paramaters << "omega_r = " << omega_r << endl;
+    targetfile_paramaters.close();
+
+    ofstream targetfile_eigenValues("../../results/results_eigenValues_twoElectrons_5.txt");
+    for (int i = 0; i < n; i++){
+        targetfile_eigenValues << setw(15) << setprecision(8) << A[i][i] << endl;
+    }
+    targetfile_eigenValues.close();
 
 
-//    // write the data to file
-//    ofstream targetfile_eigenValues;
-//    targetfile_eigenValues.open("results_eigenValues_twoElectrons.txt");
-//    for (int i = 0; i < n; i++){
-//        targetfile_eigenValues << setw(15) << setprecision(8) << A[i][i] << endl;
-//    }
-//    targetfile_eigenValues.close();
 
 
-
-
-//    ofstream targetfile_eigenVectors;
-//    targetfile_eigenVectors.open("results_eigenVectors_twoElectrons.txt");
-//    for (int i = 0; i < n; i++) {
-//        for (int j = 0; j < n; j++) {
-//            targetfile_eigenVectors << setw(15) << setprecision(8) << R[i][j] << " ";
-//        }
-//        targetfile_eigenVectors << endl;
-//    }
-//    targetfile_eigenVectors.close();
+    ofstream targetfile_eigenVectors("../../results/results_eigenVectors_twoElectrons_5.txt");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            targetfile_eigenVectors << setw(15) << setprecision(8) << R[i][j] << " ";
+        }
+        targetfile_eigenVectors << endl;
+    }
+    targetfile_eigenVectors.close();
 
 
 
