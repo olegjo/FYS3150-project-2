@@ -31,20 +31,24 @@
 \newcommand{\x}{\mathbf{x}}
 
 \title{FYS3150 Project 2}
-\date{Fall 2015}
+\date{\today}
 \author{Ole Gunnar Johansen}
 
 \begin{document}
 	\maketitle
 	
 	\begin{abstract}
-		this is the abstract\cite{BibTex}
+		In this project, I have implemented the Jacobi rotation algorithm to look at the eigenstates of one and two electrons in the harmonic oscillator potential. I have found that the eigenvalues for the three lowest states to a very high precision. In the one electron case, they were found to be $\lambda_1 = 2.999$, $\lambda_2 = 6.999$ and $\lambda_3 = 10.997$ compared to the analytical 3, 7 and 11 respectively.
+		
+		There is also made a discussion of the speed of the algorithm compared to other methods, and in relation, pros and cons connected with the Jacobi method compared to one other method. The main idea here is that the Jacobi method is intrinsically  slow, but easy to parallelize. 
+		
+		The source code for this project can be found at my github\footnote{\url{https://github.com/olegjo/FYS3150-project-2}}.
 	\end{abstract}
 	
 	\section{Introduction}
 		Eigenvalue problems are of great importance in the modern sciences. One such example is the \SL equation in quantum mechanics. The problem we are facing is, however, that such problems have analytical solutions only to a very small number of cases. In this project, I will solve the radial part of the \SL equation for one and two electrons in a harmonic oscillator potential with and without repulsive Coulomb interaction using the Jacobi's rotation method for finding eigenvalues.
 		
-		The report will be naturally structured into 
+		The report will be naturally structured into the one electron case and the two electron case, and additional results and discussions specific to the Jacobi method as separate sub sections.
 
 	
 	\section{Method}
@@ -73,7 +77,7 @@
 			The similarity transform $\B=\S^T\A\S$ then results in 
 			\begin{align*}
 				b_{ii} 	&= a_{ii}, \ i \neq k, \ i \neq l \\
-				b_{ik} 	&= a_ik\cos \theta - a_{il}\sin\theta,\ i \neq k, \ i \neq l \\
+				b_{ik} 	&= a_{ik}\cos \theta - a_{il}\sin\theta,\ i \neq k, \ i \neq l \\
 				b_{il} 	&= a_{il} \cos\theta + a_{ik}\sin\theta, \ i \neq k, \ i \neq l \\
 				b_{kk} 	&= a_{kk}\cos^2\theta - 2a_{kl}\cos\theta \sin\theta + a_{ll}\sin^2\theta \\
 				b_{ll} 	&= a_{ll}\cos^2\theta +2a_{kl}\cos\theta\sin\theta + a_{kk}\sin^2\theta \\
@@ -103,7 +107,11 @@
 			\begin{align*}
 				\B(\S^T\mathbf{u}_1) = \lambda_1 (\S^T\mathbf{u}_1)
 			\end{align*}
-			so, after a similarity transform, the similar matrix $\B$, whose eigenvalues are the same as $\A$, have the eigenvector $\S^T\mathbf{u}_1$ where $\mathbf{u}_1$ is the eigenvector of $\A$ associated with the eigenvalue $\lambda_1$. If $\B$ was a diagonal matrix, it's eigenvector would be the vectors $\mathbf{e_i}$. In this case, we would simply compute $\mathbf{u}_i = \S \mathbf{e}_i$. 
+			so, after a similarity transform, the similar matrix $\B$, whose eigenvalues are the same as $\A$, have the eigenvector $\S^T\mathbf{u}_1$ where $\mathbf{u}_1$ is the eigenvector of $\A$ associated with the eigenvalue $\lambda_1$. If $\B$ was a diagonal matrix, it's eigenvector would be the vectors $\mathbf{e_i}$. In this case, we would simply compute $\mathbf{u}_i = \S \mathbf{e}_i$. If we start with $\mathbf{R}=\mathbf{I}$, the unit matrix, the algorithm for iteratively approaching the eigenvectors is
+			\begin{align*}
+				r_{ik} &= r_{ik}\cos \theta - r_{il}\sin \theta \\
+				r_{il} &= r_{il}\cos \theta + r_{ik}\sin \theta
+			\end{align*}
 		
 		
 		\subsection{Single electron \SL equation}
@@ -294,12 +302,12 @@ int jacobi_method(double **A, double **R, int n)
 				
 		
 		\subsection{Two electrons}
-			For the case of two electrons, we are interested in the wavefunction for the ground state (lowest eigenvalue) for four different values of the oscillator "frequency" $\omega_r$. The results are shown in fig.~\ref{fig: plot two electrons}
+			For the case of two electrons, we are interested in the wavefunction for the ground state (lowest eigenvalue) for four different values of the oscillator "frequency" $\omega_r$. The results are shown in fig.~\ref{fig: plot two electrons}.
+			
 			\begin{figure}
 				\centering
    				\begin{subfigure}[b]{0.45\textwidth}
 					\includegraphics[width=1.1\textwidth]{plot-twoElectrons_01}
-					\label{fig:gull}
 				\end{subfigure}
 				~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc
 				\begin{subfigure}[b]{0.45\textwidth}
@@ -313,13 +321,36 @@ int jacobi_method(double **A, double **R, int n)
 					\includegraphics[width=1.1\textwidth]{plot-twoElectrons_5}
 				\end{subfigure}
 				\caption{Plot of the probability distributions for two electrons with four different oscillator "frequencies" $\omega_r$. }\label{fig: plot two electrons}
-\end{figure}
+			\end{figure}
+			
+			As the plot show, the oscillator frequency greatly influences the probability distribution of the position of the center of mass for the electron pair, higher frequencies leading to a narrower distribution, much closer to the origin. One other thing to note is that higher frequency leads to larger eigenvalue. This makes direct sense, as the eigenvalues $\lambda\propto E$, and higher frequencies give higher energies. Note also that for $\omega_r=0.01$, we have $\lambda_0<0 \Rightarrow E_0<0$. What this means, I do not have the competence to answer with certainty, however, I propose that this leads to an improper eigenstates (that it is a solution to the \SL equation, however not the normalization condition) and that the ground state in this case is the first to have positive energy. 
+
+		\subsection{Different methods}
+			The Jacobi method for finding eigenvalues and eigenvectors is intrinsically slow. Table~\ref{table: tomputation times jacobi vs. numpy} shows the time needed to find the eigenvalues and eigenvectors of the implemented Jacobi method vs. the function \texttt{numpy.linalg.eig} in the python \texttt{numpy} library. Ideally this comparison should be done with a C++ library, e.g. armadillo, but due to a premature system update, this library is not working on my computer. It is to say that the \texttt{numpy.linalg}-library relies heavily on the LAPACK and BLAS libraries, which is also a dependency on armadillo.
+			\begin{table}
+				\centering
+				\caption{Computation times for the Jacobi method and an eigenvalue method from the numpy library in python averaged over 10 runs for each method for each $n$.}
+				\label{table: tomputation times jacobi vs. numpy}
+				\begin{tabular}{|c|c|c|}
+					\hline
+					$n$	&	Jacobi [s]	&	Python [s]	\\ \hline
+					100	&	0.009	&	0.172	\\
+					150	&	0.025	&	0.903	\\
+					200	&	0.059	&	2.793	\\
+					250	&	0.132	&	6.564	\\
+					300	&	0.233	&	13.607	\\
+					350	&	0.367	&	24.354	\\
+					400	&	0.540	&	40.842	\\ \hline
+				\end{tabular}
+			\end{table}
+			
+			As table~\ref{table: tomputation times jacobi vs. numpy} shows, the method in the \texttt{numpy} library is much faster than the implemented Jacobi algorithm. The values for eigenvectors are not, however significantly different for a particular choice of $n$ and $\rho_\mathrm{max}$, meaning for a relatively small system as the one looked at in this project, the jacobi-method is a "good enough" method when it comes to time consummation. 
 		
 	\section{Conclusion}
-
+		The Jacobi method is a very slow method of finding eigenvalues compared to many other with computation times for a $400\times400$ matrix being around 40 s, compared to 0.5 s for the method embedded in the python \texttt{numpy} llibrary. On average, it is needed around $O(n^2)$ Jacobi rotations to find the eigenvalues of an $n\times n$ matrix, each rotation using around 30-40$n$ FLOPS, leading to $\sim O(n^3)$ FLOPS. 
 		
-	\bibliographystyle{plain}
-	\bibliography{references.bib}	
+		We have seen that both methods reaches convergence for the three lowest eigenvalues relatively quickly at $n\approx 200$. A good reason to use the Jacobi method that is easily parallelizable, so for systems where a relatively small number of grid points $n$ is sufficient, the Jacobi method may be the preferred method.
+		
 	
 \end{document}
 

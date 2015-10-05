@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.21)  4 OCT 2015 14:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.21)  5 OCT 2015 11:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -318,20 +318,7 @@ File: lstlang1.sty 2014/09/06 1.5e listings language file
 (/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2014/09/06 1.5e (Carsten Heinz)
 )
-(./FYS3150_Project-2_report.aux
-
-LaTeX Warning: Label `fig:gull' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:gull' multiply defined.
-
-
-LaTeX Warning: Label `fig:tiger' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:tiger' multiply defined.
-
-)
+(./FYS3150_Project-2_report.aux)
 \openout1 = `FYS3150_Project-2_report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
@@ -350,7 +337,8 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 37.
 LaTeX Font Info:    ... okay on input line 37.
 \AtBeginShipoutBox=\box30
 Package hyperref Info: Link coloring ON on input line 37.
- (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 (/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
@@ -407,93 +395,85 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 39.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 45.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 ) [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
  [4]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 239.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 240.
-
-
-(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 240.
+nput line 247.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 248.
 
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 240.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 248.
  [5]
-<plot-oneElectron.pdf, id=126, 578.16pt x 433.62pt>
+<plot-oneElectron.pdf, id=133, 578.16pt x 433.62pt>
 File: plot-oneElectron.pdf Graphic file (type pdf)
  <use plot-oneElectron.pdf>
-Package pdftex.def Info: plot-oneElectron.pdf used on input line 264.
+Package pdftex.def Info: plot-oneElectron.pdf used on input line 272.
 (pdftex.def)             Requested size: 404.70924pt x 303.53192pt.
 
-<plot-grid-pointsVSiterations.pdf, id=129, 578.16pt x 433.62pt>
+<plot-grid-pointsVSiterations.pdf, id=136, 578.16pt x 433.62pt>
 File: plot-grid-pointsVSiterations.pdf Graphic file (type pdf)
 
 <use plot-grid-pointsVSiterations.pdf>
 Package pdftex.def Info: plot-grid-pointsVSiterations.pdf used on input line 29
-0.
+8.
 (pdftex.def)             Requested size: 404.70924pt x 303.53192pt.
-
-
-LaTeX Warning: Reference `fig: plot two electrons' on page 6 undefined on input
- line 297.
-
-<plot-twoElectrons_01.pdf, id=131, 578.16pt x 433.62pt>
+ [6 <./plot-oneElectron.pdf>] [7 <./plot-grid-pointsVSiterations.pdf>]
+<plot-twoElectrons_01.pdf, id=243, 578.16pt x 433.62pt>
 File: plot-twoElectrons_01.pdf Graphic file (type pdf)
 
 <use plot-twoElectrons_01.pdf>
-Package pdftex.def Info: plot-twoElectrons_01.pdf used on input line 301.
+Package pdftex.def Info: plot-twoElectrons_01.pdf used on input line 310.
 (pdftex.def)             Requested size: 224.21883pt x 168.15834pt.
 
-Overfull \hbox (20.38466pt too wide) in paragraph at lines 301--303
-[][]
+Overfull \hbox (20.38466pt too wide) in paragraph at lines 310--311
+[][] 
  []
 
-<plot-twoElectrons_05.pdf, id=132, 578.16pt x 433.62pt>
+<plot-twoElectrons_05.pdf, id=244, 578.16pt x 433.62pt>
 File: plot-twoElectrons_05.pdf Graphic file (type pdf)
 
 <use plot-twoElectrons_05.pdf>
-Package pdftex.def Info: plot-twoElectrons_05.pdf used on input line 306.
+Package pdftex.def Info: plot-twoElectrons_05.pdf used on input line 314.
 (pdftex.def)             Requested size: 224.21883pt x 168.15834pt.
 
-Overfull \hbox (20.38466pt too wide) in paragraph at lines 306--307
+Overfull \hbox (20.38466pt too wide) in paragraph at lines 314--315
 [][] 
  []
 
-<plot-twoElectrons_1.pdf, id=133, 578.16pt x 433.62pt>
+<plot-twoElectrons_1.pdf, id=245, 578.16pt x 433.62pt>
 File: plot-twoElectrons_1.pdf Graphic file (type pdf)
 
 <use plot-twoElectrons_1.pdf>
-Package pdftex.def Info: plot-twoElectrons_1.pdf used on input line 309.
+Package pdftex.def Info: plot-twoElectrons_1.pdf used on input line 317.
 (pdftex.def)             Requested size: 224.21883pt x 168.15834pt.
 
-Overfull \hbox (20.38466pt too wide) in paragraph at lines 309--310
+Overfull \hbox (20.38466pt too wide) in paragraph at lines 317--318
 [][] 
  []
 
-<plot-twoElectrons_5.pdf, id=134, 578.16pt x 433.62pt>
+<plot-twoElectrons_5.pdf, id=246, 578.16pt x 433.62pt>
 File: plot-twoElectrons_5.pdf Graphic file (type pdf)
 
 <use plot-twoElectrons_5.pdf>
-Package pdftex.def Info: plot-twoElectrons_5.pdf used on input line 313.
+Package pdftex.def Info: plot-twoElectrons_5.pdf used on input line 321.
 (pdftex.def)             Requested size: 224.21883pt x 168.15834pt.
 
-Overfull \hbox (20.38466pt too wide) in paragraph at lines 313--314
+Overfull \hbox (20.38466pt too wide) in paragraph at lines 321--322
 [][] 
  []
 
-[6 <./plot-oneElectron.pdf>] [7 <./plot-grid-pointsVSiterations.pdf>]
-(./FYS3150_Project-2_report.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 324.
- [8 <./plot-twoElectrons_01.pdf> <./plot-twoElectrons_05.pdf
+[8 <./plot-twoElectrons_01.pdf> <./plot-twoElectrons_05.pdf
 
 pdfTeX warning: pdflatex (file ./plot-twoElectrons_05.pdf): PDF inclusion: mult
 iple pdfs with page group included in a single page
@@ -506,28 +486,23 @@ ple pdfs with page group included in a single page
 pdfTeX warning: pdflatex (file ./plot-twoElectrons_5.pdf): PDF inclusion: multi
 ple pdfs with page group included in a single page
 >]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 324.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 355.
+ [9]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 355.
  (./FYS3150_Project-2_report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 324.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 324.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 355.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 355.
 Package rerunfilecheck Info: File `FYS3150_Project-2_report.out' has not change
 d.
-(rerunfilecheck)             Checksum: 1B20ADBA772F07C55DCE3A2F46ECDB3C;673.
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 324.
+(rerunfilecheck)             Checksum: 663D5016F02F384837698F20B043012C;740.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 355.
  ) 
 Here is how much of TeX's memory you used:
- 9174 strings out of 493089
- 134963 string characters out of 6134842
- 259059 words of memory out of 5000000
- 12496 multiletter control sequences out of 15000+600000
- 20049 words of font info for 57 fonts, out of 8000000 for 9000
+ 9190 strings out of 493089
+ 135126 string characters out of 6134842
+ 260059 words of memory out of 5000000
+ 12506 multiletter control sequences out of 15000+600000
+ 24477 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,16n,58p,1034b,1270s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
@@ -538,25 +513,28 @@ r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr
 /local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/l
 ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loc
 al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/
-texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/tex
-live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
-ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texliv
-e/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/te
-xlive/2015/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texl
-ive/2015/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texliv
-e/2015/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/
-2015/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/20
-15/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2015
-/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2015/t
-exmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2015/tex
-mf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2015/texmf
--dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2015/texmf-d
-ist/fonts/type1/public/cm-super/sftt0800.pfb></usr/local/texlive/2015/texmf-dis
-t/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on FYS3150_Project-2_report.pdf (8 pages, 385092 bytes).
+texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texliv
+e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
+/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2
+015/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texli
+ve/2015/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive
+/2015/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2
+015/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/201
+5/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2015/
+texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/local/texlive/2015/te
+xmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2015/texm
+f-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2015/texmf-
+dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2015/texmf-di
+st/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2015/texmf-dist
+/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2015/texmf-dist/f
+onts/type1/public/cm-super/sftt0800.pfb></usr/local/texlive/2015/texmf-dist/fon
+ts/type1/public/cm-super/sftt0900.pfb></usr/local/texlive/2015/texmf-dist/fonts
+/type1/public/cm-super/sftt1095.pfb>
+Output written on FYS3150_Project-2_report.pdf (9 pages, 436669 bytes).
 PDF statistics:
- 450 PDF objects out of 1000 (max. 8388607)
- 282 compressed objects within 3 object streams
- 47 named destinations out of 1000 (max. 500000)
- 131 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 476 PDF objects out of 1000 (max. 8388607)
+ 303 compressed objects within 4 object streams
+ 49 named destinations out of 1000 (max. 500000)
+ 139 words of extra memory for PDF output out of 10000 (max. 10000000)
 

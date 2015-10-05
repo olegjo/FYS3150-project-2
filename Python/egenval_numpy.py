@@ -34,6 +34,7 @@ for i in range(1,n-1):
 
 eigenvals, eigenvecs = np.linalg.eig(A)
 print np.sort(eigenvals)[:3]
-print A[1,1], A[-1,-1]
-print time.time() - start
+print 
+print 'n =', n
+print 'Computation time: %.3f s' % (time.time() - start)
 #print A
