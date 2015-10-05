@@ -19,7 +19,7 @@ def sort(x, A):
 	return x_new, A_new
 
 problem = sys.argv[1]
-location = '../results/'
+location = 'results/'
 
 # extracting the eigenvalues
 lambdas = []
@@ -71,8 +71,8 @@ plt.plot(rho_i, np.array(u[:, 2])**2*100, label='$\lambda_2=$%.3f' % lambdas[2])
 plt.legend()
 plt.xlabel("$\\rho$")
 filename = 'plot-'+problem+'.pdf'
-plt.show()
-
+plt.savefig(filename)
+os.system('mv %s Report/' % (filename))
 
 
 
