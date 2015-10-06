@@ -19,7 +19,7 @@ def sort(x, A):
 	return x_new, A_new
 
 problem = sys.argv[1]
-location = 'results/'
+location = '../results/'
 
 # extracting the eigenvalues
 lambdas = []
@@ -54,17 +54,17 @@ rho_i = np.array([rho_min + i*h for i in range(0, n)])
 
 #sort them in ascending order of the eigenvalues
 lambdas, u = sort(lambdas, u)
-print 'rho_max = %.2f, n = %i' % (rho_max, n)
+print 'rho_max = %.2f, n = %i, omega_r = %.3f' % (rho_max, n, omega_r)
 print lambdas[:3]
 
 
 plt.plot(rho_i, np.array(u[:, 0])**2*100, label='$\lambda_0=$%.3f \n $\omega_r=$%.2f' % (lambdas[0], omega_r))
-plt.legend()
-plt.xlabel("$\\rho$")
+plt.legend(fontsize=17)
+plt.xlabel("$\\rho$ [-]", fontsize=19)
+plt.ylabel("$P(\\rho) = |\psi|^2$ [%]", fontsize=19)
 filename = 'plot-'+problem+'.pdf'
 plt.savefig(filename)
-os.system('mv %s Report/' % (filename))
-
+os.system('mv %s ../Report/' % (filename))
 
 
 

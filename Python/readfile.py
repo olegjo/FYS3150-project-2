@@ -60,23 +60,19 @@ print lambdas[:3]
 plt.subplot(3,1,1)
 plt.plot(rho_i, np.array(u[:, 0])**2*100, label='$\lambda_0=$%.3f' % lambdas[0])
 plt.tick_params(axis='x', labelbottom='off')
-plt.legend()
+plt.legend(fontsize=11)
 plt.subplot(3,1,2)
 plt.plot(rho_i, np.array(u[:, 1])**2*100, label='$\lambda_1=$%.3f' % lambdas[1])
 plt.tick_params(axis='x', labelbottom='off')
-plt.ylabel('$P(\\rho)=|\psi|^2$')
-plt.legend()
+plt.ylabel('$P(\\rho)=|\psi|^2$ [%]')
+plt.legend(fontsize=11)
 plt.subplot(3,1,3)
 plt.plot(rho_i, np.array(u[:, 2])**2*100, label='$\lambda_2=$%.3f' % lambdas[2])
-plt.legend()
-plt.xlabel("$\\rho$")
+plt.legend(fontsize=11)
+plt.xlabel("$\\rho$ [-]")
 filename = 'plot-'+problem+'.pdf'
-plt.show()
-
-
-
-
-
+plt.savefig('plot-oneElectron.pdf')
+os.system('mv plot-oneElectron.pdf ../Report/')
 
 
 
